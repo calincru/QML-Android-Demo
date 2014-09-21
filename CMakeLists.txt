@@ -65,9 +65,6 @@ endif()
 # Set the directory where tools will get installed
 set( DEMO_TOOLS_BINARY_DIR ${CMAKE_BINARY_DIR}/tools )
 
-# Include the macro for adding resources
-include( cmake/rcc.cmake )
-
 # Add other subdirectories containing CMakeLists.txt file
 add_subdirectory( src )
 add_subdirectory( tools )
