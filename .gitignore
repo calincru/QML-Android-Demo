@@ -1,5 +1,4 @@
 CMakeLists.txt.user
 Demo.pro.user
 .directory
-*.qrc
 build/*
