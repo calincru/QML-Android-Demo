@@ -1,19 +1,19 @@
-message( STATUS "Using Android CMake Toolchain" )
-cmake_policy( SET CMP0007 NEW )
-cmake_policy (SET CMP0011 NEW )
+message(STATUS "Using Android CMake Toolchain")
+cmake_policy(SET CMP0007 NEW)
+cmake_policy(SET CMP0011 NEW)
 
 
 # ------------------------------------------------------------------------------
 # Setup reasonable defaults for our project
 # ------------------------------------------------------------------------------
 
-set( ANDROID_ABI "armeabi-v7a" CACHE STRING "ABI type. See android.cmake toolchain file for details on ABI" )
-set( ANDROID_JAVA_API_LEVEL "android-19" )
-set( ANDROID_NATIVE_API_LEVEL "android-19" )
+set(ANDROID_ABI "armeabi-v7a" CACHE STRING "ABI type. See android.cmake toolchain file for details on ABI")
+set(ANDROID_JAVA_API_LEVEL "android-19")
+set(ANDROID_NATIVE_API_LEVEL "android-19")
 
-message( STATUS "Android Java API level: ${ANDROID_JAVA_API_LEVEL}" )
-message( STATUS "Android ABI: ${ANDROID_ABI}" )
-message( STATUS "Android Native API level: ${ANDROID_NATIVE_API_LEVEL}" )
+message(STATUS "Android Java API level: ${ANDROID_JAVA_API_LEVEL}")
+message(STATUS "Android ABI: ${ANDROID_ABI}")
+message(STATUS "Android Native API level: ${ANDROID_NATIVE_API_LEVEL}")
 
 
 # ------------------------------------------------------------------------------
@@ -28,38 +28,38 @@ message( STATUS "Android Native API level: ${ANDROID_NATIVE_API_LEVEL}" )
 #                 variable
 #
 # ------------------------------------------------------------------------------
-set( ANDROID_TOOL $ENV{ANDROID_SDK}/tools/android )
+set(ANDROID_TOOL $ENV{ANDROID_SDK}/tools/android)
 
-if( CMAKE_HOST_WIN32 )
-  set( ANDROID_TOOL "${ANDROID_TOOL}.bat" )
+if (CMAKE_HOST_WIN32)
+  set(ANDROID_TOOL "${ANDROID_TOOL}.bat")
 endif()
 
-if( NOT EXISTS ${ANDROID_TOOL} )
-  message( FATAL_ERROR "Failed to find `android` tool. Please make sure you have ANDROID_SDK environment variable defined" )
+if (NOT EXISTS ${ANDROID_TOOL})
+  message(FATAL_ERROR "Failed to find `android` tool. Please make sure you have ANDROID_SDK environment variable defined")
 endif()
 
-set( DEFAULT_JAVA_API_LEVEL ${ANDROID_NATIVE_API_LEVEL} )
-if( NOT ${ANDROID_JAVA_API_LEVEL} STREQUAL "" )
-  set( DEFAULT_JAVA_API_LEVEL ${ANDROID_JAVA_API_LEVEL} )
+set(DEFAULT_JAVA_API_LEVEL ${ANDROID_NATIVE_API_LEVEL})
+if (NOT ${ANDROID_JAVA_API_LEVEL} STREQUAL "")
+  set(DEFAULT_JAVA_API_LEVEL ${ANDROID_JAVA_API_LEVEL})
 endif()
 
-set( ANDROID_JAVA_API_LEVEL "${ANDROID_JAVA_API_LEVEL}" CACHE STRING "Android API level for Java code" FORCE )
+set(ANDROID_JAVA_API_LEVEL "${ANDROID_JAVA_API_LEVEL}" CACHE STRING "Android API level for Java code" FORCE)
 
-execute_process( COMMAND ${ANDROID_TOOL} list target -c
+execute_process(COMMAND ${ANDROID_TOOL} list target -c
                  OUTPUT_VARIABLE ANDROID_TARGETS)
-if( ANDROID_TARGETS STREQUAL "" )
-  message( FATAL_ERROR "Looks like you haven't installed SDK Platform for API level ${ANDROID_JAVA_API_LEVEL}. Please, make sure you have it installed by running: '${ANDROID_TOOL} list target -c'" )
+if (ANDROID_TARGETS STREQUAL "")
+  message(FATAL_ERROR "Looks like you haven't installed SDK Platform for API level ${ANDROID_JAVA_API_LEVEL}. Please, make sure you have it installed by running: '${ANDROID_TOOL} list target -c'")
 endif()
 
-string( REPLACE "\n" ";" ANDROID_TARGETS ${ANDROID_TARGETS} )
-list( LENGTH ANDROID_TARGETS ANDROID_TARGETS_COUNT )
-list( FIND ANDROID_TARGETS ${ANDROID_JAVA_API_LEVEL} ANDROID_JAVA_API_ID )
+string(REPLACE "\n" ";" ANDROID_TARGETS ${ANDROID_TARGETS})
+list(LENGTH ANDROID_TARGETS ANDROID_TARGETS_COUNT)
+list(FIND ANDROID_TARGETS ${ANDROID_JAVA_API_LEVEL} ANDROID_JAVA_API_ID)
 
-if( ANDROID_JAVA_API_ID EQUAL -1 )
-  message( FATAL_ERROR "Looks like you haven't installed SDK Platform for API level ${ANDROID_JAVA_API_LEVEL}. Please, make sure you have it installed by running: '${ANDROID_TOOL} list target -c'" )
+if (ANDROID_JAVA_API_ID EQUAL -1)
+  message(FATAL_ERROR "Looks like you haven't installed SDK Platform for API level ${ANDROID_JAVA_API_LEVEL}. Please, make sure you have it installed by running: '${ANDROID_TOOL} list target -c'")
 endif()
 
-math( EXPR ANDROID_JAVA_API_ID "${ANDROID_JAVA_API_ID} + 1" )
+math(EXPR ANDROID_JAVA_API_ID "${ANDROID_JAVA_API_ID} + 1")
 
 
 #------------------------------------------------------------------------------

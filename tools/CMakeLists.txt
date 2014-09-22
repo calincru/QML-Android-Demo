@@ -1,1 +1,1 @@
-add_subdirectory( androiddeployqt )
+add_subdirectory(androiddeployqt)
