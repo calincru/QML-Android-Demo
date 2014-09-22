@@ -51,7 +51,6 @@ if( ANDROID )
 
   # Android .so output
   set( CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/android/libs/${ARM_TARGET}/ )
-  set( DEMO_RCC_DIR ${CMAKE_BINARY_DIR}/${_dest_dir} CACHE INTERNAL "" FORCE )
 
 else()
   set( CMAKE_PREFIX_PATH "${Qt5_x86}/lib/cmake/Qt5" )
@@ -59,7 +58,6 @@ else()
 
   # Desktop build
   set( CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin )
-  set( DEMO_RCC_DIR ${CMAKE_BINARY_DIR}/${_dest_dir}/rcc CACHE INTERNAL "" FORCE )
 endif()
 
 # Set the directory where tools will get installed
