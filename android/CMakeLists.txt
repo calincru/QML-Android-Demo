@@ -19,10 +19,7 @@ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/AndroidManifest.xml.cmake ${CMAKE_CUR
 
 # Androiddeployqt configuration
 # Find qmake version 5
-if (NOT DEFINED ENV{Qt5_x86})
-  message(FATAL_ERROR "Configure the env variable Qt5_x86 to point to your host Qt5 installation.")
-endif()
-find_program(QT_QMAKE_EXECUTABLE NAMES qmake PATHS $ENV{Qt5_x86}/bin NO_DEFAULT_PATH)
+find_program(QT_QMAKE_EXECUTABLE NAMES qmake PATHS $ENV{Qt5_host}/bin NO_DEFAULT_PATH)
 
 # Create json file parsed by the androiddeployqt
 set(ANDROID_SDK $ENV{ANDROID_SDK})

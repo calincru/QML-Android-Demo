@@ -5,6 +5,21 @@ project(demo)
 # ------------------------------------------------------------------------------
 # Initial settings for our project
 # ------------------------------------------------------------------------------
+
+# Check mandatory env variables
+if (NOT DEFINED ENV{Qt5_host})
+  message(FATAL_ERROR "Configure the env variable Qt5_host to point to your host Qt5 installation.")
+else()
+  message(STATUS "Qt5 host installation dir: $ENV{Qt5_host}")
+endif()
+
+if (NOT DEFINED ENV{Qt5_android})
+  message(FATAL_ERROR "Configure the env variable Qt5_android to point to your android Qt5 installation.")
+else()
+  message(STATUS "Qt5 android installation dir: $ENV{Qt5_android}")
+endif()
+
+# Minimum Qt version
 set(QT_REQUIRED_VERSION 5.3.0)
 
 # Set application version
@@ -46,14 +61,13 @@ find_package(Qt5 ${QT_REQUIRED_VERSION} CONFIG REQUIRED Qml Quick Gui)
 
 # OS Configurations
 if (ANDROID)
-  set(CMAKE_PREFIX_PATH "${Qt5_android}/lib/cmake/Qt5")
+  set(CMAKE_PREFIX_PATH "$ENV{Qt5_android}/lib/cmake/Qt5")
   set(_dest_dir android/assets)
 
   # Android .so output
   set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/android/libs/${ARM_TARGET}/)
-
 else()
-  set(CMAKE_PREFIX_PATH "${Qt5_x86}/lib/cmake/Qt5")
+    set(CMAKE_PREFIX_PATH "$ENV{Qt5_host}/lib/cmake/Qt5")
   set(_dest_dir bin)
 
   # Desktop build
