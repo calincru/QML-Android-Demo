@@ -67,8 +67,13 @@ if (ANDROID)
   # Android .so output
   set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/android/libs/${ARM_TARGET}/)
 else()
-    set(CMAKE_PREFIX_PATH "$ENV{Qt5_host}/lib/cmake/Qt5")
-  set(_dest_dir bin)
+  set(CMAKE_PREFIX_PATH "$ENV{Qt5_host}/lib/cmake/Qt5")
+  if (CMAKE_HOST_APPLE)
+    set(_bundle_bin Demo.app/Contents/MacOS)
+    set(_dest_dir bin/${_bundle_bin})
+  else()
+    set(_dest_dir bin)
+  endif()
 
   # Desktop build
   set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)

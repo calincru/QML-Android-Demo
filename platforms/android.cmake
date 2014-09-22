@@ -29,7 +29,6 @@ message(STATUS "Android Native API level: ${ANDROID_NATIVE_API_LEVEL}")
 #
 # ------------------------------------------------------------------------------
 set(ANDROID_TOOL $ENV{ANDROID_SDK}/tools/android)
-
 if (CMAKE_HOST_WIN32)
   set(ANDROID_TOOL "${ANDROID_TOOL}.bat")
 endif()
