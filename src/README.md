@@ -8,7 +8,9 @@ When writing **Qt** applications in general, you often need *resource files*,
 such as images, sound files, fonts, etc. To include these resource files within
 app's executable, you have to declare them in a .qrc file. Qt has a mechanism to
 generate .cpp files associated to each .qrc file, but to do that, you need to
-specify the resource files (see the `qt5_add_resources(..)` in *CMakeLists.txt*).
+specify the resource files (see the `qt5_add_resources(..)` in
+*CMakeLists.txt*). The **prefix="/"** defines the *url* through which the
+resources will be indentified from .cpp files (see `QUrl("qrc:/Demo.qml"));`).
 
 Qml files are also considered resource files. That is why you will find within
 this trivial example's .qrc file only the .qml file.
