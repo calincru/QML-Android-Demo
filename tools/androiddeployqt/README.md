@@ -7,4 +7,4 @@ build directory the Qt5 libraries needed and anything else that **ant** expects
 to find.
 
 A very-well structured documentation about this tool's responsability can be
-found on [Qt5's page](http://qt-project.org/doc/qt-5/deployment-android.html#androiddeployqt).
+found on [Qt5's page](http://qt-project.org/doc/qt-5/deployment-android.html).
