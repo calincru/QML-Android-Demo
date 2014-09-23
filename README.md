@@ -58,7 +58,7 @@ export Qt5_android=<path to yout android Qt5 installation dir>
 
 Installation depends on whether you want to get the application working on
 your own machine or some external device (Android devices are the only
-option so far).
+option in this example).
 
 To generate the executable for your **own machine** (be it a
 Linux/Windows/MacOS):

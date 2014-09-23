@@ -6,9 +6,9 @@ This subdir will usually contain the following:
 building the **.apk** file to be deployed on Android devices or to
 **Google Play**. This is where the **androiddeployqt** tool is being called.
 To find more about it, check out the project's *tool* subdirectory.
-This file does not need to be changed in the most cases.
+This file does not usually need to be changed.
 
-- **AndroidManifest.xml.cmake** - each android application should provide a
+- **AndroidManifest.xml.cmake** - each android application should provide an
 AndroidManifest.xml file. To read more about it, the
 [Android's documentation](http://developer.android.com/guide/topics/manifest/manifest-intro.html)
 is pretty rich in details. What is interesting about our manifest file is that
@@ -27,6 +27,6 @@ CMake will generate a *configAndroid.json* file within the build directory. It
 will also interpret this syntax: **@VAR@** like: *VAR is a variable and I should
 replace it with its actual value*.
 
-- **res** directory - containing usually an icon for different resolutions
+- **res** directory - contains usually an icon for different resolutions
 (which are required when uploading the app to store, for example) and other
 resources.
