@@ -1,6 +1,7 @@
 ## Platforms
 
-This subdirectory contains **toolchain files**.
+This subdirectory contains **toolchain files**. These files need to be modified
+only when developing an application for a some specific android platform or ABI.
 
 **Note:** this directory **must** be named like this. This is because the
 **androiddeployqt** tool assumes so (for more about this tool, check the
