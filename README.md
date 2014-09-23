@@ -1,4 +1,4 @@
-## QML for Android Demo
+# QML for Android Demo
 
 This is just a *Hello World* application, written in **QML** and configured
 with **CMake**, to allow deploying on different OSs/architectures: Android,
@@ -10,7 +10,8 @@ What is nice about such a trivial application is that it is a good example for
 those who want to develop cross-platform QML applications using CMake (there
 are few such examples out there).
 
-### Directory structure
+
+## Directory structure
 
 - **android** - files needed by any android application. Similar dirs should
 be added for each platform (e.g. iOS);
@@ -23,7 +24,8 @@ when cross-compiling. For more details about toolchain files check out
 Each directory contains its on *README* file, so press each one for more
 details.
 
-### Configuration
+
+## Configuration
 
 Before getting the application working, a couple of dependencies must be
 solved.
@@ -52,8 +54,7 @@ export Qt5_host=<path to your host Qt5  installation dir>
 export Qt5_android=<path to yout android Qt5 installation dir>
 ```
 
-
-### Install
+## Install
 
 Installation depends on whether you want to get the application working on
 your own machine or some external device (Android devices are the only
