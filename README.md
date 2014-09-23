@@ -73,7 +73,7 @@ make
 ```
 
 I used **bash** syntax, but it's easy to adapt it to other shells.
-It should create an executable named **Demo** in ~/QML-Android-Demo/build/bin.
+It should create an executable named **Demo** in `~/QML-Android-Demo/build/bin`.
 
 
 To generate the **.apk** file for an Android device:
@@ -88,7 +88,7 @@ make
 make apk_debug
 ```
 
-It should create a .apk file in ~/QML-Android-Demo/build/android/bin.
+It should create a **.apk** file in `~/QML-Android-Demo/build/android/bin`.
 To deploy it to your Android mobile phone, simply connect it to your PC via
-USB and enter in your console
+USB and type in your console
 `adb install -r ~/QML-Android-Demo/build/android/bin/<name_of_the_apk_file>`.
