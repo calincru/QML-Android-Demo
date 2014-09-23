@@ -7,7 +7,8 @@ toolchain file from [here](https://code.google.com/p/ios-cmake/), but since
 I couldn't test it, I skipped this step).
 
 What is nice about such a trivial application is that it is a good example for
-those who want to develop cross-platform QML applications using CMake.
+those who want to develop cross-platform QML applications using CMake (there
+are few such examples out there).
 
 ### Directory structure
 
@@ -35,13 +36,11 @@ sure you download the latest versions. Also, you will need
 Then, you will need **Qt5** installed for both your host machine and for
 android/ios if you are planning to deploy the application on these
 OSs. These two links should guide you to do that:
+- [Build Qt5 from sources](http://qt-project.org/wiki/Building_Qt_5_from_Git)
+- [Build Qt5 for Android](http://qt-project.org/wiki/Qt5ForAndroidBuilding)
 
-[Build Qt5 from sources](http://qt-project.org/wiki/Building_Qt_5_from_Git)
-[Build Qt5 for Android](http://qt-project.org/wiki/Qt5ForAndroidBuilding)
-
-Make sure to add the installation dir for each to your *PATH*.
-
-Then, add these exports to your **.bashrc/.zshrc**:
+Make sure to add the installation dir for each to your *PATH*. Then, add these
+exports to your **.bashrc/.zshrc** and you should be all set up:
 ```bash
 export JAVA_HOME=<path to your jdk root dir>
 export ANDROID_HOME=<path to your android-sdk dir>
@@ -52,8 +51,6 @@ export ANDROID_NDK_TOOLCHAIN_ROOT=<path to your android-ndk/toolchains dir>
 export Qt5_host=<path to your host Qt5  installation dir>
 export Qt5_android=<path to yout android Qt5 installation dir>
 ```
-
-Then you should be all set up.
 
 
 ### Install
