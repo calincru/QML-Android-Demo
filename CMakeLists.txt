@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 3.0)
 project(demo)
 
 
@@ -6,21 +6,25 @@ project(demo)
 # Initial settings for our project
 # ------------------------------------------------------------------------------
 
-# Check mandatory env variables
-if (NOT DEFINED ENV{Qt5_host})
-  message(FATAL_ERROR "Configure the env variable Qt5_host to point to your host Qt5 installation.")
-else()
-  message(STATUS "Qt5 host installation dir: $ENV{Qt5_host}")
-endif()
+# Generate compile_commands.json for use by YCM
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
+# Check mandatory env variables
 if (NOT DEFINED ENV{Qt5_android})
   message(FATAL_ERROR "Configure the env variable Qt5_android to point to your android Qt5 installation.")
 else()
   message(STATUS "Qt5 android installation dir: $ENV{Qt5_android}")
 endif()
 
+if (NOT DEFINED ENV{Qt5_host})
+  message(FATAL_ERROR "Configure the env variable Qt5_host to point to your host Qt5 installation.")
+else()
+  message(STATUS "Qt5 host installation dir: $ENV{Qt5_host}")
+endif()
+
+
 # Minimum Qt version
-set(QT_REQUIRED_VERSION 5.3.0)
+set(QT_REQUIRED_VERSION 5.5.0)
 
 # Set application version
 set(DEMO_MAJOR_VERSION 0)
@@ -56,9 +60,6 @@ endif()
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${my_cxx_flags}")
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${my_cxx_flags}")
 
-# Each Qt5 package finds its own dependencies
-find_package(Qt5 ${QT_REQUIRED_VERSION} CONFIG REQUIRED Qml Quick Gui)
-
 # OS Configurations
 if (ANDROID)
   set(CMAKE_PREFIX_PATH "$ENV{Qt5_android}/lib/cmake/Qt5")
@@ -79,12 +80,11 @@ else()
   set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 endif()
 
-# Set the directory where tools will get installed
-set(DEMO_TOOLS_BINARY_DIR ${CMAKE_BINARY_DIR}/tools)
+# Each Qt5 package finds its own dependencies
+find_package(Qt5 ${QT_REQUIRED_VERSION} CONFIG REQUIRED Qml Quick Gui)
 
 # Add other subdirectories containing CMakeLists.txt file
 add_subdirectory(src)
-add_subdirectory(tools)
 if (ANDROID)
   add_subdirectory(android)
 endif()

@@ -2,3 +2,5 @@ CMakeLists.txt.user
 Demo.pro.user
 .directory
 build/*
+
+!.ycm_extra_conf.py
