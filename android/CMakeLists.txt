@@ -14,7 +14,7 @@ endif()
 
 # Set version
 set(ANDROID_VERSION_NAME ${DEMO_VERSION})
-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/AndroidManifest.xml.cmake ${CMAKE_CURRENT_BINARY_DIR}/AndroidManifest.xml @ONLY)
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/AndroidManifest.xml.cmake ${CMAKE_CURRENT_SOURCE_DIR}/AndroidManifest.xml @ONLY)
 
 
 # Androiddeployqt configuration
@@ -23,13 +23,12 @@ find_program(QT_QMAKE_EXECUTABLE NAMES qmake)
 
 # Create json file parsed by the androiddeployqt
 set(ANDROID_SDK $ENV{ANDROID_SDK})
-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/configAndroid.json.cmake ${CMAKE_CURRENT_BINARY_DIR}/configAndroid.json @ONLY)
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/configAndroid.json.cmake ${CMAKE_CURRENT_SOURCE_DIR}/configAndroid.json @ONLY)
 
 add_custom_command (
   OUTPUT createApkFromAndroidDeployQt
-  DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/AndroidManifest.xml
-  COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR}
-  COMMAND androiddeployqt --verbose --output ${CMAKE_CURRENT_BINARY_DIR}/ --input ${CMAKE_CURRENT_BINARY_DIR}/configAndroid.json
+  DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/AndroidManifest.xml
+  COMMAND androiddeployqt --verbose --output ${CMAKE_CURRENT_BINARY_DIR}/ --input ${CMAKE_CURRENT_SOURCE_DIR}/configAndroid.json
 )
 
 # Command to create debug apk from Makefile

@@ -9,5 +9,6 @@
  "ndk-host": "@ANDROID_NDK_HOST_SYSTEM_NAME@",
  "target-architecture": "@ARM_TARGET@",
  "application-binary": "@CMAKE_LIBRARY_OUTPUT_DIRECTORY@libDemo.so",
+ "android-package-source-directory": "@CMAKE_CURRENT_SOURCE_DIR@",
  "android-package": "net.demo"
 }
